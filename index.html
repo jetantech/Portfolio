@@ -38,13 +38,21 @@ header {
   background-color: var(--black);
   padding: 1rem 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  position: relative;
 }
+
+.hamburger {
+  position: absolute;
+  left: 20px;
+}
+
 
 header .logo {
   width: 100px;
@@ -53,6 +61,7 @@ header .logo {
 nav {
   display: flex;
   gap: 2rem;
+  text-align: center;
 }
 
 nav a {
@@ -77,6 +86,7 @@ nav a:hover {
   color: var(--white);
   cursor: pointer;
   transition: transform 0.3s ease;
+  margin-top: 25px;
 }
 
 .hamburger.active {
@@ -91,7 +101,7 @@ nav a:hover {
 }
 
 #hero h1 {
-  font-size: 4rem;
+  font-size: 3.4rem;
   color: var(--orange);
 }
 
@@ -229,7 +239,7 @@ nav a:hover {
 }
 
 .floating-message-icon img {
-  width: 60%;
+  width: 100%;
   height: auto;
 }
 
@@ -237,71 +247,7 @@ nav a:hover {
   transform: scale(1.1);
 }
 
-.floating-message-icon::after {
-  content: "Message Us";
-  position: absolute;
-  top: -30px;
-  background: var(--orange);
-  color: #000;
-  font-size: 0.8rem;
-  padding: 2px 6px;
-  border-radius: 5px;
-  white-space: nowrap;
-}
 
-
-/* Contact Form Styling */
-.contact-form {
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  background-color: var(--dark-gray);
-  padding: 20px;
-  border-radius: 8px;
-  width: 300px;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
-  z-index: 1001;
-}
-
-.contact-form {
-  transition: all 0.4s ease-in-out;
-  opacity: 0;
-  transform: translateY(10px);
-}
-.contact-form.show {
-  display: flex;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-.contact-form input,
-.contact-form textarea {
-  width: 90%;
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
-}
-
-.contact-form button {
-  background-color: var(--orange);
-  color: var(--black);
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 5px;
-}
-
-.contact-form button:hover {
-  background-color: #ff8c00;
-}
 
 /* Footer Styling */
 footer {
@@ -391,15 +337,15 @@ footer .social-icons a:hover {
 
 </head>
 <body>
-  <header>
+  <header style="text-align: center;" >
     <!-- Added id="hamburger" to the hamburger icon -->
     <i class="fas fa-bars hamburger" id="hamburger" tabindex="0" aria-label="Toggle navigation menu" aria-expanded="false"></i>
     <!-- Added id="nav-menu" to nav -->
-    <nav id="nav-menu">
-      <a href="#home">Home</a>
+    <nav  id="nav-menu">
+    <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
-      <a href="#works">Works</a> <!-- Fixed typo: was #walks -->
+      <a href="#works">Works</a> 
     </nav>
   </header>
 
@@ -480,7 +426,7 @@ footer .social-icons a:hover {
   <!-- Floating Message Icon -->
   <div class="floating-message-icon" id="messageIcon">
     <a href="mailto:jetantech@gmail.com">
-      <img src="floating image.png" alt="Message Us" />
+      <img src="floating image.png" alt="Message Us" width="200px" />
     </a>
   </div>
 
