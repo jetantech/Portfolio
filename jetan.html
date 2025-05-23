@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jetan Tech</title>
+  <link rel="icon" href="JETAN.jpg" type="image/x-icon" >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Root Variables for Color Scheme */
+:root {
+  --black: #000;
+  --orange: #FFA500;
+  --white: #fff;
+  --dark-gray: #111;
+  --light-gray: #f4f4f4;
+  --font-family: 'Segoe UI', sans-serif;
+}
+
+/* Reset Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+  scroll-behavior: smooth;
+}
+
+/* Body Style */
+body {
+  background-color: var(--black);
+  color: var(--white);
+  line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+  background-color: var(--black);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+header .logo {
+  width: 100px;
+}
+
+nav {
+  display: flex;
+  gap: 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a.active {
+  border-bottom: 2px solid var(--orange);
+}
+
+nav a:hover {
+  color: var(--orange);
+}
+
+/* Hamburger Menu for Mobile */
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  color: var(--white);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.hamburger.active {
+  transform: rotate(90deg);
+}
+
+/* Hero Section */
+#hero {
+  background-color: var(--black);
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+#hero h1 {
+  font-size: 4rem;
+  color: var(--orange);
+}
+
+#hero h2 {
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+#hero p {
+  font-size: 1.2rem;
+  margin: 1rem auto 2rem;
+  max-width: 600px;
+}
+
+#hero .btn {
+  background-color: var(--orange);
+  color: var(--black);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+#hero .btn:hover {
+  background-color: #ff8c00;
+}
+
+/* Section Styling */
+.section {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--orange);
+}
+
+.services-grid,
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.services-grid .card i {
+  color: var(--orange); 
+  height: 20px;
+}
+
+#works .container {
+  text-align: center;
+}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background-color: var(--dark-gray);
+  padding: 2rem;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 165, 0, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(255, 165, 0, 0.2);
+}
+
+.work-img {
+  width: 100%;
+  height: 250px; /* Fixed height for uniformity */
+  object-fit: cover; /* Ensures the images cover the area without distortion */
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.card h3 {
+  margin-top: 1rem;
+  color: var(--orange);
+}
+
+.card p {
+  margin-top: 0.5rem;
+  color: var(--white);
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+
+/* Mission Section */
+#mission .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+}
+
+#mission img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  animation: slideIn 1s ease-out;
+}
+
+/* Floating Message Icon */
+.floating-message-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--orange);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  z-index: 1001;
+}
+
+.floating-message-icon img {
+  width: 60%;
+  height: auto;
+}
+
+.floating-message-icon:hover {
+  transform: scale(1.1);
+}
+
+.floating-message-icon::after {
+  content: "Message Us";
+  position: absolute;
+  top: -30px;
+  background: var(--orange);
+  color: #000;
+  font-size: 0.8rem;
+  padding: 2px 6px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+
+/* Contact Form Styling */
+.contact-form {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  background-color: var(--dark-gray);
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+  z-index: 1001;
+}
+
+.contact-form {
+  transition: all 0.4s ease-in-out;
+  opacity: 0;
+  transform: translateY(10px);
+}
+.contact-form.show {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.contact-form input,
+.contact-form textarea {
+  width: 90%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.contact-form button {
+  background-color: var(--orange);
+  color: var(--black);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.contact-form button:hover {
+  background-color: #ff8c00;
+}
+
+/* Footer Styling */
+footer {
+  background-color: var(--dark-gray);
+  padding: 2rem;
+  text-align: center;
+}
+
+footer p,
+footer a {
+  color: var(--white);
+  font-size: 0.9rem;
+}
+
+footer .social-icons a {
+  color: var(--orange);
+  margin: 0 10px;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+  color: var(--white);
+}
+
+.card .tech-stack {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  height: 0;
+  overflow: hidden;
+}
+
+.card:hover .tech-stack {
+  opacity: 1;
+  transform: translateY(0);
+  height: auto;
+}
+
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  nav {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    background-color: var(--black);
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s ease;
+  }
+
+  nav.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .services-grid,
+  .works-grid {
+    grid-template-columns: 1fr;
+  }
+  
+}
+
+/* Slide-in Animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+  </style>
+
+</head>
+<body>
+  <header>
+    <!-- Added id="hamburger" to the hamburger icon -->
+    <i class="fas fa-bars hamburger" id="hamburger" tabindex="0" aria-label="Toggle navigation menu" aria-expanded="false"></i>
+    <!-- Added id="nav-menu" to nav -->
+    <nav id="nav-menu">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#works">Works</a> <!-- Fixed typo: was #walks -->
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="container">
+      <img src="jetanlogo.png" alt="Jetan Tech Logo" class="logo" width="200" />
+      <h1>Jetan Tech</h1>
+      <h2>Your Partner in Innovative Tech Solutions</h2>
+      <p>We specialize in Website development, Video editing, and Graphics design.</p>
+      <a href="mailto:jetantech@gmail.com" class="btn">Get Started</a>
+    </div>
+  </section>
+
+  <section id="mission" class="section">
+    <div class="container">
+      <h2>Our Mission</h2>
+      <p>Our mission is to bring learning to where learners are. We create digital learning solutions tailored to your needs, making education more accessible and effective in the rapidly evolving tech landscape.</p>
+      <img src="mission image.jpg" alt="Mission Image" />
+    </div>
+  </section>
+
+  <section class="section services" id="services">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+      <div class="card"><i class="fas fa-code"></i><h3>Web Development</h3><p>Responsive, modern websites tailored to your brand.</p></div>
+      <div class="card"><i class="fas fa-video"></i><h3>Video Editing</h3><p>Professional video edits to tell your story beautifully.</p></div>
+      <div class="card"><i class="fas fa-paint-brush"></i><h3>Graphic Design</h3><p>Creative visuals that captivate and convert.</p></div>
+      <div class="card"><i class="fas fa-bullhorn"></i><h3>Digital Marketing</h3><p>Strategic marketing to boost your online presence.</p></div>
+    </div>
+  </section>
+
+  <section class="section about" id="about">
+    <h2>About Us</h2>
+    <p>Jetan Tech is a passionate team driven by innovation and excellence. Our mission is to turn ideas into impactful digital experiences. We value creativity, collaboration, and commitment to quality.</p>
+  </section>
+
+  <section class="section works" id="works">
+    <h2>Our Work</h2>
+    <div class="works-grid">
+      <div class="card">
+        <img src="susan store.jpg" alt="Project 1" class="work-img" />
+        <h3>Landing Page</h3>
+        <p>Landing page for a clothing store.</p>
+        <div class="tech-stack">
+          <h4>Technologies</h4>
+          <p>HTML</p>
+          <p>CSS</p>
+          <p>JavaScript</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="log in.jpg" alt="Project 2" class="work-img" />
+        <h3>Log in Page</h3>
+        <p>A clean and user-friendly login page design.</p>
+        <div class="tech-stack">
+          <h4>Technologies</h4>
+          <p>HTML</p>
+          <p>Tailwind CSS</p>
+          <p>JavaScript</p>
+          <p>Flask</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="mc cleaners.jpg" alt="Project 3" class="work-img" />
+        <h3>Company Website</h3>
+        <p>Main website for a cleaning agency showcasing services and testimonials.</p>
+        <div class="tech-stack">
+          <h4>Technologies</h4>
+          <p>HTML</p>
+          <p>CSS</p>
+          <p>JavaScript</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Message Icon -->
+  <div class="floating-message-icon" id="messageIcon">
+    <a href="mailto:jetantech@gmail.com">
+      <img src="floating image.png" alt="Message Us" />
+    </a>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Jetan Tech. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/jetantech_?igsh=MTFuc2pjOW5mYnVi" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@jetantech?_t=ZM-8vtH4TO2wFh&_r=1" target="_blank" rel="noopener"><i class="fab fa-tiktok"></i></a>
+      <a href="https://wa.me/+2349036758226" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+      <a href="#" aria-label="X (Twitter)"><i class="fab fa-x"></i></a>
+      <a href="https://youtube.com/@jetantech?si=eM2BqtHsJzQUpr6C" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p><a href="#">Contact</a> | <a href="#">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const navMenu = document.getElementById("nav-menu");
+
+    // Toggle mobile menu
+    hamburger.addEventListener("click", () => {
+      const expanded =
+        hamburger.getAttribute("aria-expanded") === "true" ? "false" : "true";
+      hamburger.setAttribute("aria-expanded", expanded);
+      hamburger.classList.toggle("active");
+      navMenu.classList.toggle("active");
+    });
+
+    // Close mobile menu when a link is clicked
+    navMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        hamburger.setAttribute("aria-expanded", "false");
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+      });
+    });
+
+    // Keyboard accessibility for hamburger (Enter and Space key)
+    hamburger.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        hamburger.click();
+      }
+    });
+  </script>
+</body>
+</html>
